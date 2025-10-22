@@ -43,12 +43,12 @@
                         </div>
 
                         {{-- --------------------------------- --}}
-                        {{-- Tabel 1: Detail Closingan         --}}
+                        {{-- Tabel 1: Rekapan Terbaru         --}}
                         {{-- --------------------------------- --}}
                         <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-8"> {{-- Tambah margin-bottom --}}
                             {{-- Header Tabel Closingan --}}
                             <div class="p-6 flex justify-between items-center">
-                                <h2 class="text-xl font-semibold text-gray-800">Detail Closingan</h2>
+                                <h2 class="text-xl font-semibold text-gray-800">Rekapan Terbaru</h2>
                                 <div class="flex items-center gap-3">
                                     <button
                                         class="flex items-center gap-2 px-4 py-2 bg-indigo-900 text-white rounded-lg text-sm font-medium hover:bg-indigo-800 transition">
