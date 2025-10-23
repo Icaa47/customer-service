@@ -48,7 +48,7 @@
                         <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-8"> {{-- Tambah margin-bottom --}}
                             {{-- Header Tabel Closingan --}}
                             <div class="p-6 flex justify-between items-center">
-                                <h2 class="text-xl font-semibold text-gray-800">Rekapan Terbaru</h2>
+                                <h2 class="text-xl font-semibold text-gray-800">Rekapan Closingan Terbaru</h2>
                                 <div class="flex items-center gap-3">
                                     <button
                                         class="flex items-center gap-2 px-4 py-2 bg-indigo-900 text-white rounded-lg text-sm font-medium hover:bg-indigo-800 transition">
@@ -69,7 +69,7 @@
                                         <tr>
                                             <th scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Klien</th>
+                                                NamaCs</th>
                                             <th scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Produk</th>
@@ -78,7 +78,7 @@
                                                 Jumlah</th>
                                             <th scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Waktu</th>
+                                                Tanggal</th>
                                             <th scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Status</th>
@@ -89,7 +89,7 @@
                                             <tr>
                                                 <td class="px-6 py-4 whitespace-nowrap">
                                                     <div class="text-sm font-medium text-gray-900">
-                                                        {{ $closing['klien'] }}</div>
+                                                        {{ $closing['nama'] }}</div>
                                                     <div class="text-sm text-gray-500">({{ $closing['bisnis'] }})</div>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
@@ -132,96 +132,86 @@
                             @endif
                         </div>
 
-                        {{-- --------------------------------- --}}
-                        {{-- Tabel 2: Akun CS                  --}}
-                        {{-- --------------------------------- --}}
+                        {{-- ================================= --}}
+                        {{-- == TABEL 2: PERFORMA CS        == --}}
+                        {{-- ================================= --}}
                         <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-                            {{-- Header Tabel Akun CS (Search & Tambah) --}}
+                            {{-- Header Tabel Performa CS (Judul & Search) --}}
                             <div class="p-6 flex flex-col md:flex-row justify-between items-center gap-4">
-                                <h2 class="text-xl font-semibold text-gray-800 w-full md:w-auto mb-4 md:mb-0">Akun CS
-                                </h2>
+                                <h2
+                                    class="text-xl font-semibold text-gray-800 w-full md:w-auto mb-4 md:mb-0 text-center md:text-left">
+                                    Performa CS</h2> {{-- Judul diubah --}}
                                 <div class="w-full md:w-auto flex flex-col md:flex-row items-center gap-3">
-                                    {{-- Search Input Akun CS --}}
+                                    {{-- Search Input Performa CS --}}
                                     <div class="relative w-full md:w-64">
                                         <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-                                            <i class="bi bi-search text-gray-400"></i>
+                                            <i class="bi bi-search text-gray-400"></i> {{-- Icon: Bootstrap Icons --}}
                                         </span>
-                                        <input wire:model.live.debounce.300ms="search" type="text"
-                                            placeholder="Cari Akun CS..."
+                                        <input wire:model.live.debounce.300ms="searchPerformance" {{-- Terhubung ke $searchPerformance --}}
+                                            type="text" placeholder="Cari Nama CS..." {{-- Placeholder diubah --}}
                                             class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 text-sm shadow-sm">
                                     </div>
-                                    {{-- Tombol Tambah Data Akun CS --}}
-                                    <a href="#"
-                                        class="w-full md:w-auto inline-flex items-center justify-center gap-2 px-4 py-2 bg-indigo-900 text-white rounded-lg text-sm font-medium hover:bg-indigo-800 transition shadow-sm">
-                                        <i class="bi bi-plus-lg"></i>
-                                        <span>Tambah Data</span>
-                                    </a>
+                                    {{-- Tombol Tambah Data tidak ada di gambar untuk Performa CS --}}
                                 </div>
                             </div>
 
-                            {{-- Tabel Akun CS --}}
+                            {{-- Tabel Performa CS Wrapper --}}
                             <div class="overflow-x-auto">
                                 <table class="w-full min-w-full divide-y divide-gray-200">
                                     <thead class="bg-gray-50">
                                         <tr>
+                                            {{-- Header Kolom Diubah Sesuai Gambar --}}
                                             <th scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Nama</th>
                                             <th scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Email</th>
+                                                Total Closingan</th>
                                             <th scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Role</th>
+                                                Rata-rata Closing</th>
                                             <th scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Status</th>
-                                            <th scope="col"
-                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Aksi</th>
+                                            {{-- Kolom Aksi tidak ada di tabel Performa CS pada gambar --}}
                                         </tr>
                                     </thead>
                                     <tbody class="bg-white divide-y divide-gray-200">
-                                        @forelse ($users as $user)
+                                        {{-- Loop data $performances --}}
+                                        @forelse ($performances as $perf)
                                             <tr>
                                                 <td class="px-6 py-4 whitespace-nowrap">
-                                                    <div class="text-sm font-medium text-gray-900">{{ $user['nama'] }}
+                                                    <div class="text-sm font-medium text-gray-900">{{ $perf['nama'] }}
                                                     </div>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                                                    {{ $user['email'] }}</td>
+                                                    {{ $perf['total_closingan'] }}</td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                                                    {{ $user['role'] }}</td>
+                                                    {{ $perf['rata_rata_closing'] }}</td>
                                                 <td class="px-6 py-4 whitespace-nowrap">
                                                     @php
+                                                        // Logika warna status pill
                                                         $statusClass =
-                                                            $user['status'] == 'Aktif'
+                                                            $perf['status'] == 'Aktif'
                                                                 ? 'bg-green-100 text-green-800'
                                                                 : 'bg-red-100 text-red-800';
                                                     @endphp
                                                     <span
                                                         class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full {{ $statusClass }}">
-                                                        {{ $user['status'] }}
+                                                        {{ $perf['status'] }}
                                                     </span>
                                                 </td>
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium flex gap-3">
-                                                    <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                                                        title="Edit">
-                                                        <i class="bi bi-pencil-square text-lg"></i>
-                                                    </a>
-                                                    <button type="button" class="text-red-600 hover:text-red-900"
-                                                        title="Delete">
-                                                        <i class="bi bi-trash3-fill text-lg"></i>
-                                                    </button>
-                                                </td>
+                                                {{-- Kolom Aksi tidak ada --}}
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="5" class="px-6 py-12 text-center text-sm text-gray-500">
-                                                    @if (empty($search))
-                                                        Tidak ada data Akun CS.
+                                                {{-- colspan diubah jadi 4 karena kolom Aksi hilang --}}
+                                                <td colspan="4" class="px-6 py-12 text-center text-sm text-gray-500">
+                                                    @if (empty($searchPerformance))
+                                                        Tidak ada data Performa CS.
                                                     @else
-                                                        Tidak ada hasil untuk pencarian "{{ $search }}".
+                                                        Tidak ada hasil untuk pencarian "{{ $searchPerformance }}".
+                                                        {{-- Sesuaikan variabel search --}}
                                                     @endif
                                                 </td>
                                             </tr>
@@ -230,16 +220,12 @@
                                 </table>
                             </div>
 
-                            {{-- Paginasi Akun CS --}}
-                            @if ($users->hasPages())
+                            {{-- Paginasi Performa CS (Penting: tambahkan pageName) --}}
+                            @if ($performances->hasPages())
                                 <div class="p-4 border-t border-gray-200">
-                                    {{ $users->links(data: ['pageName' => 'userPage']) }} {{-- PENTING: Tentukan pageName --}}
+                                    {{-- Pass 'performancePage' sebagai pageName --}}
+                                    {{ $performances->links(data: ['pageName' => 'performancePage']) }}
                                 </div>
                             @endif
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
