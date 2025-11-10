@@ -1,0 +1,1 @@
+<img {{ $attributes }} src="{{ asset('images/icon-vodeco.jpeg') }}" alt="Application Logo">
